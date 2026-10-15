@@ -103,7 +103,7 @@ The architecture follows a strict multi-stage lifecycle:
 | **LangGraph Orchestrator** | [`agents/orchestrator.py`](agents/orchestrator.py) | **COMPLETE** | Compiled cyclical/conditional StateGraph connecting all nodes. |
 | **MongoDB Quarantine Store** | [`storage/`](storage/) | **COMPLETE** | Pydantic data contract, lifecycle finite state machine, unique index enforcement, and PyMongo repository. |
 | **Role-Based Access Control** | — | *Planned (Phase 8B)* | Cryptographic authorization and RBAC verification for SOC analysts. |
-| **Streamlit SOC Dashboard** | [`dashboard/`](dashboard/) | *Planned (Phase 8C)* | Interactive web dashboard for real-time telemetry, XAI explanations, and quarantine controls. |
+| **Streamlit SOC Dashboard** | [`dashboard/app.py`](dashboard/app.py) | **COMPLETE** | Interactive Human-in-the-Loop web dashboard for real-time telemetry, XAI explanations, and quarantine controls. |
 | **Self-Adaptive Learning** | — | *Planned (Phase 9)* | Continuous feedback loop and model adaptation based on human-verified incidents. |
 
 ---
@@ -370,6 +370,15 @@ python experiments/validate_phase8a.py
 pytest tests/
 ```
 
+### D. Run Human-in-the-Loop SOC Dashboard (Phase 8C)
+Launches the interactive web dashboard for real-time telemetry inspection, XAI attributions, and human approval/rejection workflows:
+```bash
+python experiments/run_dashboard.py
+# Or directly via streamlit:
+streamlit run dashboard/app.py
+```
+Open `http://localhost:8501` in your browser. Detailed presentation guide and review panel defense script: [`docs/REVIEW_PANEL_PRESENTATION_GUIDE.md`](docs/REVIEW_PANEL_PRESENTATION_GUIDE.md).
+
 ---
 
 ## 18. Current Implementation Status
@@ -383,7 +392,7 @@ pytest tests/
 * **Phase 7 (Multi-Agent AI LangGraph Orchestrator):** COMPLETE & FROZEN (16/16 Checks Passed)
 * **Phase 8A (MongoDB Quarantine Store):** COMPLETE & FROZEN (18/18 Checks Passed)
 * **Phase 8B (Role-Based Access Control):** Planned
-* **Phase 8C (Streamlit SOC Dashboard):** Planned
+* **Phase 8C (Streamlit SOC Dashboard):** COMPLETE (Human-in-the-Loop Web Dashboard with XAI & Persistent Audit Trail)
 * **Phase 9 (Self-Adaptive Feedback Retraining):** Planned
 
 ---

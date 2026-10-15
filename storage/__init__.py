@@ -19,6 +19,7 @@ from storage.quarantine_store import (
     MongoQuarantineStore,
     create_quarantine_store,
 )
+from storage.json_store import JsonQuarantineStore
 from storage.schemas import (
     ALLOWED_TRANSITIONS,
     QUARANTINE_ELIGIBLE_ACTIONS,
@@ -43,6 +44,7 @@ __all__ = [
     "BaseQuarantineStore",
     "MongoQuarantineStore",
     "InMemoryQuarantineStore",
+    "JsonQuarantineStore",
     "create_quarantine_store",
     "IncidentStatus",
     "ALLOWED_TRANSITIONS",
